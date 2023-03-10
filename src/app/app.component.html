@@ -1,9 +1,12 @@
 <h1>{{title}}</h1>
-<input type="url" [(ngModel)]="myAngularxQrCode" >
+<input type="url" [(ngModel)]="myAngularxQrCode">
+<button (click)="qrsend()" >Ingrese url</button>
 
+<img src="assets/guardian_games_warlock_2022.jpg">
 
+<qrcode #parent [qrdata]='Url' [width]="256" [errorCorrectionLevel]="'M'" [allowEmptyString]="true"></qrcode>
 
-<qrcode [qrdata]='myAngularxQrCode' [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+<button (click)="saveAsImage(parent)">Download QR Code Image</button>
 
 
 
