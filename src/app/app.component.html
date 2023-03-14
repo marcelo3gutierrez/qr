@@ -4,9 +4,9 @@
 
 <img src="assets/guardian_games_warlock_2022.jpg">
 
-<qrcode #parent [qrdata]='Url' [width]="256" [errorCorrectionLevel]="'M'" [allowEmptyString]="true"></qrcode>
+<qrcode #parent [qrdata]='url' [width]="256" [errorCorrectionLevel]="'M'" [allowEmptyString]="true"></qrcode>
 
-<button (click)="saveAsImage(parent)">Download QR Code Image</button>
+<button (click)="saveAsImage()">Download QR Code Image</button>
 
 
 

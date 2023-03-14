@@ -9,34 +9,32 @@ import { Route, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'QR Code Generator';
-
-  @ViewChild("myqr")elm!: ElementRef<HTMLImageElement>;
+  url: string = "";
+  myAngularxQrCode: string = "";
   
-
-  ngOnInit(): void{
-    console.log(location)
-    this.Url = location.href;
-  }
-
-  qrsend(){
-    this.Url = this.myAngularxQrCode;
-    console.log(this.Url)
-  }
-
-  Url: string = "";
-
-   myAngularxQrCode: string = "";
-
   constructor (private router : Router) {
     this.myAngularxQrCode = "";
   }
 
-  saveAsImage(parent: any) {
+  ngOnInit(): void{
+    //console.log(location)
+    this.url = location.href;
+  }
+
+  qrsend(){
+    this.url = this.myAngularxQrCode;
+    //console.log(this.url)
+  }
+
+  saveAsImage() {
+    const canvas = document.querySelectorAll('canvas');
+    //console.log(canvas[0].toDataURL('image/png'));
+    const img = canvas[0].toDataURL('image/png');
     // fetches base 64 date from image
-    const parentElement = parent.el.nativeElement.querySelector("qrcode").src;
+    
 
     // converts base 64 encoded image to blobData
-    let blobData = this.convertBase64ToBlob(parentElement);
+    let blobData = this.convertBase64ToBlob(img);
 
       const blob = new Blob([blobData], { type: "image/png" });
       const url = window.URL.createObjectURL(blob);
